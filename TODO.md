@@ -1,0 +1,1 @@
+- [ ] Update src/contexts/AuthContext.jsx to add isAuthenticated and useAuth hook
