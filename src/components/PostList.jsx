@@ -17,12 +17,14 @@ const PostList = () => {
     },[]);
      
     useEffect(()=>{
+      if(Array.isArray(posts)){
         setFilteredPosts(
             posts.filter(post => 
                 post.title.toLowerCase().includes(search.toLowerCase()) || 
                 post.content.toLowerCase().includes(search.toLowerCase())
             )
         );
+    }
     }, [search, posts]);
 
     const fetchPosts = async () => {
@@ -47,23 +49,27 @@ const PostList = () => {
     }
    }
   if(loading) return <p>Loading...</p>
+
   return (
     <div>
       <h2>Posts</h2>
       <input
+         className="search-input"
         type="text"
         placeholder="Search posts..."
-        value={() => ''} 
-        // onChange={(e) => setSearch(e.target.value)}
+        value={search} 
+        onChange={(e) => setSearch(e.target.value)}
       />
       <div className='posts-grid'>
-        <div className='post-card'>
-            <h3>Post Title</h3>
-            <p>Post excerpt...</p>
-            <Link to={`/`} className='view-link'>View</Link>
-            <Link to={`/`} className='edit-link'>Edit</Link>
-            <button className='delete-button'>Delete</button>
-        </div>
+        {filteredPosts.map(post =>{
+        return(
+            <div key={post.id} className="post-card">
+              <h3>{post.title}</h3>
+            </div>
+           )
+        })
+           
+        }
         
       </div>
     </div>
