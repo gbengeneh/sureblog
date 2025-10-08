@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Links } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { getPosts, deletePost } from '../../api'
+
 
 const PostList = () => {
     const [search, setSearch] = useState('')
     const [posts, setPosts] = useState([])
     const [filteredPosts, setFilteredPosts] = useState([])
     const [loading, setLoading] = useState(false)
-    const {user} = useAuth();
+    const {user, isAuthenticated} = useAuth();
 
     const userId = user ? user.id : null;
 
@@ -65,6 +66,15 @@ const PostList = () => {
         return(
             <div key={post.id} className="post-card">
               <h3>{post.title}</h3>
+              {post.image && <img src={`/uploads/${post.image.split('/').pop()}`} alt={post.title} onError={(e) => e.target.style.display= "none"} />}
+              <p>{post.content.substring(0, 100)}...</p>
+              <div className='post-buttons'>
+                 <Link to={`/posts/${post.id}`} className='view-link'>View</Link>
+
+                  {isAuthenticated && post.user_id == userId && <Link to={`/posts/${post.id}/edit`} className="edit-link">Edit</Link>}
+                  
+                {isAuthenticated && post.user_id == userId && <button onClick={() => handleDelete(post.id)} className="delete-btn">Delete</button>}
+              </div>
             </div>
            )
         })
