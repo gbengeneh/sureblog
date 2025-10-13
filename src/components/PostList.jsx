@@ -66,7 +66,7 @@ const PostList = () => {
         return(
             <div key={post.id} className="post-card">
               <h3>{post.title}</h3>
-              {post.image && <img src={`/uploads/${post.image.split('/').pop()}`} alt={post.title} onError={(e) => e.target.style.display= "none"} />}
+              {post.image && <img src={`http://localhost/phpclass/blog/uploads/${post.image.split('/').pop()}`} alt={post.title} style={{ height: '200px', width: '100%'  }} onError={(e) => e.target.style.display= "none"} />}
               <p>{post.content.substring(0, 100)}...</p>
               <div className='post-buttons'>
                  <Link to={`/posts/${post.id}`} className='view-link'>View</Link>

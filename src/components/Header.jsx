@@ -22,7 +22,7 @@ const Header = () => {
                 {({token, logout}) => (
                     token ? (
                         <>
-                        <Link to="/create-post" onClick={()=>setMenuOpen(false)}>Create Post</Link>
+                        <Link to="/create" onClick={()=>setMenuOpen(false)}>Create Post</Link>
                         <button onClick={() => {logout(); setMenuOpen(false);}}>Logout</button> 
                         </>
                     ) : (

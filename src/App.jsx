@@ -16,26 +16,24 @@ import Categories from './components/Categories'
  
 function App() {
 
-  
+
   return (
     <AuthProvider>
       <Router>
         <Header />
-      </Router>
-   <Router>
-      <Routes>
+        <Routes>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/posts" element={<PostList />} />
-        <Route path="/posts/create" element={<ProtectedRoute> <PostCreate />  </ProtectedRoute>} />
-        <Route path="/posts/:id" element={<PostDetails />} />
-        <Route path="/posts/create" element={<ProtectedRoute> <PostEdit />  </ProtectedRoute>} />
-        <Route path="/categories" element={ <Categories />} />
-        <Route path="/" element={ <PostList />} />
-      </Routes>
-   </Router>
-   </AuthProvider>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/posts" element={<PostList />} />
+          <Route path="/create" element={<ProtectedRoute> <PostCreate />  </ProtectedRoute>} />
+          <Route path="/posts/:id" element={<PostDetails />} />
+          <Route path="/edit" element={<ProtectedRoute> <PostEdit />  </ProtectedRoute>} />
+          <Route path="/categories" element={ <Categories />} />
+          <Route path="/" element={ <PostList />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   )
 }
 
