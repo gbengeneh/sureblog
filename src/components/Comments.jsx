@@ -16,7 +16,9 @@ const Comments = ({ postId }) => {
   const fetchComments = async () => {
     try {
       const response = await getComments(postId);
-      setComments(response.data);
+      // Filter comments to only include those for the specific postId
+      const filteredComments = response.data.filter(comment => comment.post_id === parseInt(postId));
+      setComments(filteredComments);
     } catch (err) {
       console.error('Error fetching comments:', err);
     } finally {
