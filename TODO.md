@@ -1,4 +1,7 @@
-# TODO List for Fixing Comments Display Issue
+# TODO: Fix Auth Context Issues
 
-- [x] Edit src/components/Comments.jsx to filter comments by postId after fetching to ensure only comments for the specific post are displayed.
-- [ ] Test the app to verify comments display only for the specific post.
+- [x] Update ProtectedRoute.jsx to use useAuth() and isAuthenticated
+- [x] Update PostDetails.jsx to use useAuth(), user for userId, and isAuthenticated for edit link
+- [x] Update Comments.jsx to use useAuth() and isAuthenticated for comment form
+- [x] Update Login.jsx to use useAuth() for login
+- [x] Add console logs in AuthContext.jsx for token persistence debugging
