@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost/phpclass/blog/index.php';
+// const API_BASE_URL = 'http://localhost/phpclass/blog/index.php';
+const API_BASE_URL = 'https://gposts.infinityfreeapp.com/';
 
 const api = axios.create({
     baseURL: API_BASE_URL,
